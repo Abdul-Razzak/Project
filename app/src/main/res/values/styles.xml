@@ -8,7 +8,7 @@
     <style name="AppTheme.LoginRegister" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:windowBackground">@android:color/darker_gray</item>
         <item name="colorControlNormal">@android:color/white</item>
         <item name="colorControlHighlight">@android:color/white</item>
         <item name="colorControlActivated">@android:color/white</item>
