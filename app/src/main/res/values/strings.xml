@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Learn2Crack</string>
+    <string name="title_activity_bottom_fragment">BottomFragment</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_fragment_bottom">FragmentBottom</string>
+    <string name="item_1">Search</string>
+    <string name="item_2">User Profile</string>
+    <string name="item_3">Item 3</string>
 </resources>
