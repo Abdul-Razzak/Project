@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="com.learn2crack.EditProfile">
+
+    <ImageView
+        android:id="@android:id/icon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:maxHeight="200dp" />
+
+    <Button
+        android:id="@+id/eUpload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Picture" />
+
+    <EditText
+        android:id="@+id/eFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/text_not_curve"
+        android:hint="Full name"
+        android:layout_marginBottom="10dp"
+        android:textColorHint="#bbbbbb" />
+
+    <EditText
+        android:id="@+id/eUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/text_not_curve"
+        android:hint="User Name"
+        android:layout_marginBottom="10dp"
+        android:textColorHint="#bbbbbb" />
+
+    <EditText
+        android:id="@+id/eAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/text_not_curve"
+        android:hint="Age"
+        android:layout_marginBottom="10dp"
+        android:textColorHint="#bbbbbb" />
+
+    <EditText
+        android:id="@+id/eCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/text_not_curve"
+        android:hint="City"
+        android:layout_marginBottom="10dp"
+        android:textColorHint="#bbbbbb" />
+
+    <!--<LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:padding="20dp">
+
+       <Button
+           android:id="@+id/eSave"
+           android:layout_width="130dp"
+           android:layout_height="wrap_content"
+           android:padding="10dp"
+           android:layout_margin="4dp"
+           style="@style/DefaultButtonText"
+           android:text="Save" />
+
+       <Button
+           android:id="@+id/eCancel"
+           android:layout_width="130dp"
+           android:layout_height="wrap_content"
+           android:padding="10dp"
+           android:layout_margin="4dp"
+           android:gravity="center"
+           style="@style/DefaultButtonText"
+           android:text="Cancel" />
+
+   </LinearLayout>-->
+
+    <Button
+        android:id="@+id/eUpdateProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="UPDATE YOUR PROFILE"
+        />
+
+
+</LinearLayout>
+
+
+

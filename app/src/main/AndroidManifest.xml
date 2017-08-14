@@ -32,10 +32,10 @@
         <activity
             android:name=".ProfileActivity"
             android:theme="@style/AppTheme.Profile" />
-
         <activity
             android:name=".FragmentBottom"
             android:label="@string/title_activity_fragment_bottom" />
+        <activity android:name=".EditProfile"></activity>
     </application>
 
 </manifest>
