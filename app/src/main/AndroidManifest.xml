@@ -35,7 +35,8 @@
         <activity
             android:name=".FragmentBottom"
             android:label="@string/title_activity_fragment_bottom" />
-        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".EditProfile" />
+        <activity android:name=".VenueDetails"></activity>
     </application>
 
 </manifest>
