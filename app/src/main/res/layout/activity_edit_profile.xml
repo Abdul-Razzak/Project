@@ -32,32 +32,32 @@
         android:textColorHint="#bbbbbb" />
 
     <EditText
-        android:id="@+id/eUserName"
+        android:id="@+id/eNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:background="@drawable/text_not_curve"
-        android:hint="User Name"
+        android:hint="Phone Number"
         android:layout_marginBottom="10dp"
         android:textColorHint="#bbbbbb" />
 
     <EditText
-        android:id="@+id/eAge"
+        android:id="@+id/eGender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:background="@drawable/text_not_curve"
-        android:hint="Age"
+        android:hint="Gender"
         android:layout_marginBottom="10dp"
         android:textColorHint="#bbbbbb" />
 
     <EditText
-        android:id="@+id/eCity"
+        android:id="@+id/eBio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:background="@drawable/text_not_curve"
-        android:hint="City"
+        android:hint="Bio"
         android:layout_marginBottom="10dp"
         android:textColorHint="#bbbbbb" />
 
@@ -93,7 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="UPDATE YOUR PROFILE"
+        android:text="Save Profile"
         />
 
 
