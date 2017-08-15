@@ -2,12 +2,16 @@ package com.learn2crack.network;
 
 import com.learn2crack.model.Response;
 import com.learn2crack.model.User;
+import com.learn2crack.model.Venue;
+
+import java.util.List;
 
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 public interface RetrofitInterface {
@@ -29,4 +33,8 @@ public interface RetrofitInterface {
 
     @POST("users/{email}/password")
     Observable<Response> resetPasswordFinish(@Path("email") String email, @Body User user);
+
+    @GET("places")
+    Observable<List<Venue>> getVenues(@Query("query") String query, @Query("lat") Double lat, @Query("lng") Double lng);
+
 }

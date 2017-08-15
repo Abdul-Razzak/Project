@@ -12,7 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.learn2crack.model.Venue;
+import com.learn2crack.network.NetworkUtil;
+
+import java.util.List;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
+
 public class ItemOneFragment extends Fragment {
+    private CompositeSubscription mSubscriptions;
     public static ItemOneFragment newInstance() {
         ItemOneFragment fragment = new ItemOneFragment();
         return fragment;
@@ -20,6 +30,7 @@ public class ItemOneFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        mSubscriptions = new CompositeSubscription();
         super.onCreate(savedInstanceState);
     }
 
@@ -33,6 +44,7 @@ public class ItemOneFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(getActivity(), VenueDetails.class);
+                requestVenues("breakfast", Double.valueOf(49.872677), Double.valueOf(8.632473));
                 startActivity(intent1);//Edited here
             }
         });
@@ -87,5 +99,23 @@ public class ItemOneFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void requestVenues(String query, Double lat, Double lng) {
+
+        mSubscriptions.add(NetworkUtil.getVenues().getVenues(query, lat, lng)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponse,this::handleError));
+    }
+
+    private void handleResponse(List<Venue> response) {
+
+        System.out.println(response);
+
+    }
+
+    private void handleError(Throwable error) {
+
     }
 }
