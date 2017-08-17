@@ -27,13 +27,7 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
-import com.learn2crack.model.Venue;
-import com.learn2crack.network.NetworkUtil;
 
-import java.util.List;
-
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 public class ItemOneFragment extends Fragment implements
@@ -48,7 +42,6 @@ public class ItemOneFragment extends Fragment implements
     Location mLastLocation;
     LocationRequest mLocationRequest;
 
-    private CompositeSubscription mSubscriptions;
     public static ItemOneFragment newInstance() {
         ItemOneFragment fragment = new ItemOneFragment();
         return fragment;
@@ -56,7 +49,6 @@ public class ItemOneFragment extends Fragment implements
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        mSubscriptions = new CompositeSubscription();
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
@@ -94,10 +86,7 @@ public class ItemOneFragment extends Fragment implements
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(getActivity(), VenueDetails.class);
-                latitude = 49.872677;
-                longitude = 8.632473;
 
-                requestVenues("breakfast", latitude, longitude);
                 startActivity(intent1);//Edited here
             }
         });
@@ -152,23 +141,6 @@ public class ItemOneFragment extends Fragment implements
             }
         });
         return view;
-    }
-
-    private void requestVenues(String query, Double lat, Double lng) {
-
-        mSubscriptions.add(NetworkUtil.getVenues().getVenues(query, lat, lng)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(this::handleResponse,this::handleError));
-    }
-
-    private void handleError(Throwable throwable) {
-    }
-
-    private void handleResponse(List<Venue> response) {
-
-        System.out.println(response);
-
     }
 
     protected synchronized void buildGoogleApiClient() {
