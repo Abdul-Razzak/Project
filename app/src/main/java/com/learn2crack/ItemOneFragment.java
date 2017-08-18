@@ -115,7 +115,7 @@ public class ItemOneFragment extends Fragment implements
         {
             @Override
             public void onClick(View v){
-                Intent intent1 = new Intent(getActivity(), VenueDetails.class);
+                Intent intent1 = new Intent(getActivity(), ListActivity.class);
                 startActivity(intent1);//Edited here
             }
         });
