@@ -28,8 +28,6 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 
-import rx.subscriptions.CompositeSubscription;
-
 public class ItemOneFragment extends Fragment implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -96,7 +94,8 @@ public class ItemOneFragment extends Fragment implements
         {
             @Override
             public void onClick(View v){
-                Intent intent1 = new Intent(getActivity(), VenueDetails.class);
+                Intent intent1 = new Intent(getActivity(), MapDemoActivity.class);
+
                 startActivity(intent1);//Edited here
             }
         });
