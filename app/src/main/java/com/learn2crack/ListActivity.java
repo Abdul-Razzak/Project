@@ -2,6 +2,7 @@ package com.learn2crack;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
@@ -51,7 +52,7 @@ public class ListActivity extends AppCompatActivity{
     private double lat;
     private double lng;
     private final static String KEY_LOCATION = "location";
-
+    String query;
     /*
      * Define a request code to send to Google Play services This code is
      * returned in Activity.onActivityResult
@@ -62,6 +63,8 @@ public class ListActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSubscriptions = new CompositeSubscription();
+        Intent listIntent = getIntent();
+        query = listIntent.getStringExtra("query");
         if (savedInstanceState != null && savedInstanceState.keySet().contains(KEY_LOCATION)) {
             // Since KEY_LOCATION was found in the Bundle, we can be sure that mCurrentLocation
             // is not null.
@@ -179,7 +182,7 @@ public class ListActivity extends AppCompatActivity{
                     @Override
                     public void onLocationResult(LocationResult locationResult) {
                         onLocationChanged(locationResult.getLastLocation());
-                        requestVenues("breakfast", lat, lng);
+                        requestVenues(query, lat, lng);
                     }
                 },
                 Looper.myLooper());
