@@ -1,13 +1,16 @@
 <resources>
-    <string name="app_name">FourSquare</string>
-    <string name="title_activity_bottom_fragment">BottomFragment</string>
+    <string name="app_name">TripBuddy</string>
+    <string name="title_activity_bottom_fragment">TripBuddy</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_activity_fragment_bottom">FragmentBottom</string>
+    <string name="title_activity_fragment_bottom">TripBuddy</string>
     <string name="item_1">Search</string>
     <string name="item_2">Lists</string>
     <string name="item_3">History</string>
     <string name="item_4">User Profile</string>
+    <string name="title_activity_fragment_top">TripBuddy</string>
+    <string name="item_5">List View</string>
+    <string name="item_6">Map View</string>
     <string name="google_maps_api_key">AIzaSyDz0Ew0u9_WILcCtF6ssd2du9aSrvRsFJ8</string>
 </resources>
