@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -52,18 +54,21 @@ public class ListActivity extends AppCompatActivity{
     private double lat;
     private double lng;
     private final static String KEY_LOCATION = "location";
+
     String query;
     /*
      * Define a request code to send to Google Play services This code is
      * returned in Activity.onActivityResult
      */
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
-
+    RecyclerView venueView;
+    AdapterVenue mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSubscriptions = new CompositeSubscription();
         Intent listIntent = getIntent();
+        setContentView(R.layout.activity_list);
         query = listIntent.getStringExtra("query");
         if (savedInstanceState != null && savedInstanceState.keySet().contains(KEY_LOCATION)) {
             // Since KEY_LOCATION was found in the Bundle, we can be sure that mCurrentLocation
@@ -249,7 +254,10 @@ public class ListActivity extends AppCompatActivity{
     }
 
     private void handleResponse(List<Venue> response) {
-
+        venueView = (RecyclerView)findViewById(R.id.venueList);
+        mAdapter = new AdapterVenue(ListActivity.this, response);
+        venueView.setAdapter(mAdapter);
+        venueView.setLayoutManager(new LinearLayoutManager(ListActivity.this));
         System.out.println(response);
 
     }
