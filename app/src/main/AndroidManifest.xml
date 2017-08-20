@@ -41,8 +41,8 @@
             android:label="FragmentBottom" />
 
         <activity
-            android:name=".FragmentTop"
-            android:label="FragmentTop" />
+            android:name=".DataView"
+            android:label="DataView" />
 
         <activity android:name=".EditProfile" />
         <activity android:name=".VenueDetails"></activity>
