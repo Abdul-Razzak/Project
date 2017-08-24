@@ -54,7 +54,6 @@ public class FragmentTop extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_top);
-
         if (savedInstanceState != null && savedInstanceState.keySet().contains(KEY_LOCATION)) {
             // Since KEY_LOCATION was found in the Bundle, we can be sure that mCurrentLocation
             // is not null.
@@ -74,6 +73,10 @@ public class FragmentTop extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.action_item5:
                                 selectedFragment = FragmentList.newInstance();
+                                Bundle bundle = new Bundle();
+                                bundle.putDouble("lat",lat);
+                                bundle.putDouble("lng",lng);
+                                selectedFragment.setArguments(bundle);
                                 break;
                             case R.id.action_item6:
                                 selectedFragment = FragmentMap.newInstance();
@@ -205,6 +208,8 @@ public class FragmentTop extends AppCompatActivity {
                         listIntent.putExtra("lat",locationResult.getLastLocation().getLatitude());
                         listIntent.putExtra("lng",locationResult.getLastLocation().getLongitude());
                         startActivity(listIntent);*/
+                        lat = locationResult.getLastLocation().getLatitude();
+                        lng = locationResult.getLastLocation().getLongitude();
                     }
                 },
                 Looper.myLooper());
