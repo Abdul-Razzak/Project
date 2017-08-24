@@ -126,7 +126,7 @@ public class ItemOneFragment extends Fragment implements
         {
             @Override
             public void onClick(View v){
-                Intent intent1 = new Intent(getActivity(), DataView.class);
+                Intent intent1 = new Intent(getActivity(), FragmentTop.class);
                 startActivity(intent1);//Edited here
             }
         });
@@ -136,8 +136,7 @@ public class ItemOneFragment extends Fragment implements
         {
             @Override
             public void onClick(View v){
-                Intent intent1 = new Intent(getActivity(), DataView.class);
-                intent1.putExtra("query","nightlife");
+                Intent intent1 = new Intent(getActivity(), VenueDetails.class);
                 startActivity(intent1);//Edited here
             }
         });

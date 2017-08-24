@@ -1,10 +1,10 @@
 package com.learn2crack.model;
 
 public class Venue {
-    public String id;
-    public String name;
-    public Double lat;
-    public Double lng;
+    private String id;
+    private String name;
+    private Double lat;
+    private Double lng;
 
     public String getId() {
         return id;
