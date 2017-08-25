@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -29,9 +31,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.learn2crack.model.Venue;
+import com.learn2crack.network.NetworkUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
@@ -44,6 +54,9 @@ public class MapDemoActivity extends AppCompatActivity{
     Location mCurrentLocation;
     private long UPDATE_INTERVAL = 60000;  /* 60 secs */
     private long FASTEST_INTERVAL = 5000; /* 5 secs */
+    private CompositeSubscription mSubscriptions;
+    List<Venue> venues;
+
 
     private final static String KEY_LOCATION = "location";
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
@@ -72,6 +85,8 @@ public class MapDemoActivity extends AppCompatActivity{
             Toast.makeText(this, "Error - Map Fragment was null!!", Toast.LENGTH_SHORT).show();
         }
 
+        mSubscriptions = new CompositeSubscription();
+
     }
 
     protected void loadMap(GoogleMap googleMap) {
@@ -81,9 +96,14 @@ public class MapDemoActivity extends AppCompatActivity{
             MapDemoActivityPermissionsDispatcher.getMyLocationWithCheck(this);
             MapDemoActivityPermissionsDispatcher.startLocationUpdatesWithCheck(this);
             LatLng sydney = new LatLng(49.876367, 8.649936);
-            googleMap.addMarker(new MarkerOptions().position(sydney)
-                    .title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            List<LatLng> markerList  = new ArrayList<>();
+            if(venues !=null) {
+                for(Venue venue: venues) {
+                    LatLng latlng = new LatLng(venue.getLat(),venue.getLng());
+                    markerList.add(latlng);
+                    googleMap.addMarker(new MarkerOptions().position(latlng));
+                }
+            }
         } else {
             Toast.makeText(this, "Error - Map was null!!", Toast.LENGTH_SHORT).show();
         }
@@ -201,6 +221,23 @@ public class MapDemoActivity extends AppCompatActivity{
                 Looper.myLooper());
     }
 
+    private void requestVenues(String query, Double lat, Double lng) {
+
+        mSubscriptions.add(NetworkUtil.getVenues().getVenues(query, lat, lng)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponse,this::handleError));
+    }
+
+    private void handleError(Throwable throwable) {
+    }
+
+    private void handleResponse(List<Venue> response) {
+        venues = response;
+        loadMap(map);
+
+    }
+
     public void onLocationChanged(Location location) {
         // GPS may be turned off
         if (location == null) {
@@ -213,6 +250,7 @@ public class MapDemoActivity extends AppCompatActivity{
         String msg = "Updated Location: " +
                 Double.toString(location.getLatitude()) + "," +
                 Double.toString(location.getLongitude());
+        requestVenues("breakfast", location.getLatitude(), location.getLongitude());
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
@@ -245,5 +283,6 @@ public class MapDemoActivity extends AppCompatActivity{
             return mDialog;
         }
     }
+
 
 }

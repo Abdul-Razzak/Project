@@ -141,6 +141,17 @@ public class ItemOneFragment extends Fragment implements
             }
         });
 
+        Button mapRadioButton = (Button)view.findViewById(R.id.MapRadio);
+        mapRadioButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v){
+                Intent intent1 = new Intent(getActivity(), MapDemoActivity.class);
+                intent1.putExtra("query",query);
+                startActivity(intent1);//Edited here
+            }
+        });
+
         return view;
     }
 
