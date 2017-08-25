@@ -18,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -39,7 +41,7 @@ public class ItemOneFragment extends Fragment implements
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     LocationRequest mLocationRequest;
-
+    String query;
     public static ItemOneFragment newInstance() {
         ItemOneFragment fragment = new ItemOneFragment();
         return fragment;
@@ -121,26 +123,24 @@ public class ItemOneFragment extends Fragment implements
             }
         });
 
-        Button button5 = (Button)view.findViewById(R.id.coffee);
-        button5.setOnClickListener(new View.OnClickListener()
+        RadioGroup radioCategoryGroup;
+        RadioButton radioButton;
+        radioCategoryGroup = (RadioGroup) view.findViewById(R.id.category);
+        int selectedId = radioCategoryGroup.getCheckedRadioButtonId();
+        radioButton = (RadioButton) view.findViewById(selectedId);
+
+        Button listRadioButton = (Button)view.findViewById(R.id.listRadio);
+        query = listRadioButton.getText().toString();
+        listRadioButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v){
-                Intent intent1 = new Intent(getActivity(), DataView.class);
+                Intent intent1 = new Intent(getActivity(), ListActivity.class);
+                intent1.putExtra("query",query);
                 startActivity(intent1);//Edited here
             }
         });
 
-        Button button6 = (Button)view.findViewById(R.id.things);
-        button6.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v){
-                Intent intent1 = new Intent(getActivity(), DataView.class);
-                intent1.putExtra("query","nightlife");
-                startActivity(intent1);//Edited here
-            }
-        });
         return view;
     }
 

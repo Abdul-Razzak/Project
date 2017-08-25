@@ -68,6 +68,88 @@
             android:text="Things to do" />
 
     </LinearLayout>
+    <RadioGroup
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/breakfastradio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="breakfast" />
+
+            <RadioButton
+                android:id="@+id/lunchradio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lunch"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/dinnerradio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dinner" />
+
+            <RadioButton
+                android:id="@+id/nightliferadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nightlife"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/coffeetea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CoffeeOrTea" />
+
+            <RadioButton
+                android:id="@+id/thingsToDo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="thingsToDo"/>
+        </LinearLayout>
+    </RadioGroup>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/listRadio"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="300dp"
+            android:text="List" />
+
+        <Button
+            android:id="@+id/MapRadio"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:text="Map" />
+
+    </LinearLayout>
 
 </RelativeLayout>
