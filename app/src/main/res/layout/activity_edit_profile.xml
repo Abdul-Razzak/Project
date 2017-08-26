@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context="com.learn2crack.EditProfile">
+    tools:context="com.tkpraktikum.activity.EditProfile">
 
     <ImageView
         android:id="@android:id/icon"

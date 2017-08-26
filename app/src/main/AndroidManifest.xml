@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.learn2crack">
+    package="com.tkpraktikum">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.tkpraktikum.activity.MainActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.LoginRegister">
             <intent-filter>
@@ -34,16 +34,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProfileActivity"
+            android:name="com.tkpraktikum.activity.ProfileActivity"
             android:theme="@style/AppTheme.Profile" />
         <activity
-            android:name=".FragmentBottom"
+            android:name="com.tkpraktikum.fragments.FragmentBottom"
             android:label="FragmentBottom" />
 
-        <activity android:name=".EditProfile" />
-        <activity android:name=".VenueDetails"></activity>
+        <activity android:name="com.tkpraktikum.activity.EditProfile" />
+        <activity android:name="com.tkpraktikum.activity.VenueDetails"></activity>
         <activity
-            android:name="com.learn2crack.MapDemoActivity"
+            android:name="com.tkpraktikum.activity.MapDemoActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.learn2crack.ListActivity"
+            android:name="com.tkpraktikum.activity.ListActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
