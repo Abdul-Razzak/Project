@@ -22,7 +22,7 @@ public class VenueDetails extends AppCompatActivity {
         double latitude = 49.872677;
         double longitude= 8.632473;
 
-        requestVenues("breakfast", latitude, longitude);
+        //requestVenues("breakfast", latitude, longitude);
         setContentView(R.layout.activity_venue_details);
     }
 

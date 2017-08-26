@@ -25,12 +25,20 @@ public class AdapterVenue extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     DataVenue current;
     int currentPos=0;
 
+    public interface OnItemClickListener {
+        void onItemClick(Venue item);
+    }
+
+    private final OnItemClickListener listener;
+
     // create constructor to innitilize context and data sent from MainActivity
-    public AdapterVenue(Context context, List<Venue> data){
+    public AdapterVenue(Context context, List<Venue> data, OnItemClickListener listener){
         this.context=context;
         inflater= LayoutInflater.from(context);
         this.data=data;
+        this.listener = listener;
     }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -43,6 +51,7 @@ public class AdapterVenue extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder= (MyHolder) holder;
         Venue current=data.get(position);
+        myHolder.bind(data.get(position), listener);
         myHolder.textVenueName.setText(current.name);
     }
 
@@ -59,6 +68,14 @@ public class AdapterVenue extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public MyHolder(View itemView) {
             super(itemView);
             textVenueName= (TextView) itemView.findViewById(R.id.textVenueName);
+        }
+
+        public void bind(final Venue item, final OnItemClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
         }
 
     }

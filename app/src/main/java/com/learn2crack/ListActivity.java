@@ -255,7 +255,14 @@ public class ListActivity extends AppCompatActivity{
 
     private void handleResponse(List<Venue> response) {
         venueView = (RecyclerView)findViewById(R.id.venueList);
-        mAdapter = new AdapterVenue(ListActivity.this, response);
+        mAdapter = new AdapterVenue(ListActivity.this, response, new AdapterVenue.OnItemClickListener() {
+            @Override
+            public void onItemClick(Venue item) {
+                Intent intent1 = new Intent(ListActivity.this, VenueDetails.class);
+
+                startActivity(intent1);//Edited here
+            }
+        });
         venueView.setAdapter(mAdapter);
         venueView.setLayoutManager(new LinearLayoutManager(ListActivity.this));
         System.out.println(response);
