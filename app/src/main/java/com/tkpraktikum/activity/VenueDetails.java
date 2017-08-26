@@ -1,5 +1,6 @@
 package com.tkpraktikum.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -22,7 +23,8 @@ public class VenueDetails extends AppCompatActivity {
         mSubscriptions = new CompositeSubscription();
         double latitude = 49.872677;
         double longitude= 8.632473;
-
+        Intent detailsIntent = getIntent();
+        String query = detailsIntent.getStringExtra("venueId");
         //requestVenues("breakfast", latitude, longitude);
         setContentView(R.layout.activity_venue_details);
     }
