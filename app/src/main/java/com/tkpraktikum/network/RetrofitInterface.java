@@ -37,4 +37,7 @@ public interface RetrofitInterface {
     @GET("places")
     Observable<List<Venue>> getVenues(@Query("query") String query, @Query("lat") Double lat, @Query("lng") Double lng);
 
+    @GET("venue")
+    Observable<Venue> getVenue(@Query("venueId") String id);
+
 }

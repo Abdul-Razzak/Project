@@ -25,13 +25,13 @@ public class VenueDetails extends AppCompatActivity {
         double longitude= 8.632473;
         Intent detailsIntent = getIntent();
         String query = detailsIntent.getStringExtra("venueId");
-        //requestVenues("breakfast", latitude, longitude);
+        requestVenue(query);
         setContentView(R.layout.activity_venue_details);
     }
 
-    private void requestVenues(String query, Double lat, Double lng) {
+    private void requestVenue(String query) {
 
-        mSubscriptions.add(NetworkUtil.getVenues().getVenues(query, lat, lng)
+        mSubscriptions.add(NetworkUtil.getVenue().getVenue(query)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResponse,this::handleError));
@@ -40,8 +40,7 @@ public class VenueDetails extends AppCompatActivity {
     private void handleError(Throwable throwable) {
     }
 
-    private void handleResponse(List<Venue> response) {
-
+    private void handleResponse(Venue response) {
         System.out.println(response);
 
     }
