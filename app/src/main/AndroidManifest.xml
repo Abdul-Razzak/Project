@@ -40,10 +40,6 @@
             android:name=".FragmentBottom"
             android:label="FragmentBottom" />
 
-        <activity
-            android:name=".FragmentTop"
-            android:label="FragmentTop" />
-
         <activity android:name=".EditProfile" />
         <activity android:name=".VenueDetails"></activity>
         <activity

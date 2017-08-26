@@ -80,7 +80,7 @@ public class NetworkUtil {
         RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io());
 
         return new Retrofit.Builder()
-                .baseUrl(Constants.BASE_API)
+                .baseUrl(Constants.BASE_URL)
                 .addCallAdapterFactory(rxAdapter)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(RetrofitInterface.class);
