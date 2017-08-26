@@ -16,10 +16,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tkpraktikum.R;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.tkpraktikum.R;
 import com.tkpraktikum.model.Response;
 import com.tkpraktikum.network.NetworkUtil;
 import com.tkpraktikum.utils.Constants;

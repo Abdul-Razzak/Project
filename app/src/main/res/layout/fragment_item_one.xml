@@ -8,66 +8,114 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal" >
-        <Button
-            android:id="@+id/breakfast"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="200dp"
-            android:text="Breakfast" />
 
-        <Button
-            android:id="@+id/lunch"
-            android:layout_width="150dp"
+        <EditText
+            android:id="@+id/search_result"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:text="Lunch" />
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginStart="40dp"
+            android:hint="Search"
+            />
+
+
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp">
+
         <Button
-            android:id="@+id/dinner"
+            android:id="@+id/listRadio1"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="250dp"
-            android:text="Dinner" />
+            android:layout_marginTop="150dp"
+            android:text="List" />
 
         <Button
-            android:id="@+id/nightlife"
+            android:id="@+id/MapRadio1"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="250dp"
-            android:text="Nightlife" />
+            android:layout_marginTop="150dp"
+            android:text="Map" />
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/coffee"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="300dp"
-            android:text="Coffee or Tea" />
+    <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/breakfast"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="200dp"
+                android:text="Breakfast" />
 
-        <Button
-            android:id="@+id/things"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
-            android:text="Things to do" />
+            <Button
+                android:id="@+id/lunch"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:text="Lunch" />
+        </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            <Button
+                android:id="@+id/dinner"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="250dp"
+                android:text="Dinner" />
+
+            <Button
+                android:id="@+id/nightlife"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="250dp"
+                android:text="Nightlife" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/coffee"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="300dp"
+                android:text="Coffee or Tea" />
+
+            <Button
+                android:id="@+id/things"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="300dp"
+                android:text="Things to do" />
+
+        </LinearLayout> -->
     <RadioGroup
         android:id="@+id/category"
         android:layout_width="wrap_content"
@@ -80,15 +128,19 @@
 
             <RadioButton
                 android:id="@+id/breakfastradio"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:text="breakfast" />
+                android:layout_marginLeft="80dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="300dp"
+                android:text="Breakfast" />
 
             <RadioButton
                 android:id="@+id/lunchradio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="lunch"/>
+                android:layout_marginTop="300dp"
+                android:text="Lunch"/>
         </LinearLayout>
 
         <LinearLayout
@@ -98,15 +150,17 @@
 
             <RadioButton
                 android:id="@+id/dinnerradio"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:text="dinner" />
+                android:layout_marginLeft="80dp"
+                android:layout_marginStart="80dp"
+                android:text="Dinner" />
 
             <RadioButton
                 android:id="@+id/nightliferadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="nightlife"/>
+                android:text="Nightlife"/>
         </LinearLayout>
 
         <LinearLayout
@@ -116,15 +170,17 @@
 
             <RadioButton
                 android:id="@+id/coffeetea"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:text="CoffeeOrTea" />
+                android:layout_marginLeft="80dp"
+                android:layout_marginStart="80dp"
+                android:text="Coffee/Tea" />
 
             <RadioButton
                 android:id="@+id/thingsToDo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="thingsToDo"/>
+                android:text="ThingsToDo"/>
         </LinearLayout>
     </RadioGroup>
 
@@ -132,7 +188,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp">
 
         <Button
             android:id="@+id/listRadio"
@@ -140,14 +200,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="400dp"
             android:text="List" />
 
         <Button
             android:id="@+id/MapRadio"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="400dp"
             android:text="Map" />
 
     </LinearLayout>

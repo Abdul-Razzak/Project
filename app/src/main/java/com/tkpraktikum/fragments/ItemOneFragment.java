@@ -85,49 +85,6 @@ public class ItemOneFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
-
-        Button button = (Button)view.findViewById(R.id.breakfast);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(getActivity(), VenueDetails.class);
-
-                startActivity(intent1);//Edited here
-            }
-        });
-
-        Button button2 = (Button)view.findViewById(R.id.lunch);
-        button2.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v){
-                Intent intent1 = new Intent(getActivity(), MapDemoActivity.class);
-
-                startActivity(intent1);//Edited here
-            }
-        });
-
-        Button button3 = (Button)view.findViewById(R.id.dinner);
-        button3.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v){
-                Intent intent1 = new Intent(getActivity(), VenueDetails.class);
-                startActivity(intent1);//Edited here
-            }
-        });
-
-        Button button4 = (Button)view.findViewById(R.id.nightlife);
-        button4.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v){
-                Intent intent1 = new Intent(getActivity(), ListActivity.class);
-                intent1.putExtra("query","nightlife");
-                startActivity(intent1);//Edited here
-            }
-        });
-
         RadioGroup radioCategoryGroup;
         RadioButton radioButton;
         radioCategoryGroup = (RadioGroup) view.findViewById(R.id.category);
