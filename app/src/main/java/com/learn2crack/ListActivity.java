@@ -49,8 +49,8 @@ public class ListActivity extends AppCompatActivity{
     private CompositeSubscription mSubscriptions;
     private LocationRequest mLocationRequest;
     Location mCurrentLocation;
-    private long UPDATE_INTERVAL = 60000;  /* 60 secs */
-    private long FASTEST_INTERVAL = 5000; /* 5 secs */
+    private long UPDATE_INTERVAL = 60000 * 5;  /* 60 secs */
+    private long FASTEST_INTERVAL = 5000 * 10; /* 5 secs */
     private double lat;
     private double lng;
     private final static String KEY_LOCATION = "location";
