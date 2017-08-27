@@ -3,6 +3,8 @@ package com.tkpraktikum.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.tkpraktikum.R;
 import com.tkpraktikum.model.Venue;
@@ -16,7 +18,6 @@ import rx.subscriptions.CompositeSubscription;
 
 public class VenueDetails extends AppCompatActivity {
     private CompositeSubscription mSubscriptions;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,9 @@ public class VenueDetails extends AppCompatActivity {
     }
 
     private void handleResponse(Venue response) {
+        TextView venueName = (TextView) findViewById (R.id.venueName);
+        venueName.setText(response.getName());
+
         System.out.println(response);
 
     }
