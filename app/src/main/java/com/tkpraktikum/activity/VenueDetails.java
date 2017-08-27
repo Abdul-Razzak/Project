@@ -17,6 +17,7 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 public class VenueDetails extends AppCompatActivity {
+
     private CompositeSubscription mSubscriptions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

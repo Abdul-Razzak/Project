@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ public class ItemOneFragment extends Fragment implements
     double latitude;
     double longitude;
     private int PROXIMITY_RADIUS = 10000;
+    String  searchText;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     LocationRequest mLocationRequest;
@@ -86,12 +88,44 @@ public class ItemOneFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
+
+        Button searchListButton = (Button)view.findViewById(R.id.searchList);
+        searchListButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v){
+                Intent intent1 = new Intent(getActivity(), ListActivity.class);
+                EditText editText = (EditText)view.findViewById(R.id.search_box);
+                searchText = editText.getText().toString();
+                if(searchText == null || searchText.equals("")) {
+                    searchText = "breakfast";
+                }
+                intent1.putExtra("query",searchText);
+                startActivity(intent1);//Edited here
+            }
+        });
+
+        Button searchMapButton = (Button)view.findViewById(R.id.searchMap);
+        searchMapButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v){
+                EditText editText = (EditText)view.findViewById(R.id.search_box);
+                searchText = editText.getText().toString();
+                if(searchText == null || searchText.equals("")) {
+                    searchText = "breakfast";
+                }
+                Intent intent1 = new Intent(getActivity(), MapDemoActivity.class);
+                intent1.putExtra("query",searchText);
+                startActivity(intent1);//Edited here
+            }
+        });
+
         RadioGroup radioCategoryGroup;
         RadioButton radioButton;
         radioCategoryGroup = (RadioGroup) view.findViewById(R.id.category);
         int selectedId = radioCategoryGroup.getCheckedRadioButtonId();
         radioButton = (RadioButton) view.findViewById(selectedId);
-
 
 
         Button listRadioButton = (Button)view.findViewById(R.id.listRadio);
