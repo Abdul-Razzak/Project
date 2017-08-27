@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tkpraktikum.R;
-import com.tkpraktikum.model.DataVenue;
 import com.tkpraktikum.model.Venue;
 
 import java.util.Collections;
@@ -23,7 +22,6 @@ public class AdapterVenue extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private Context context;
     private LayoutInflater inflater;
     List<Venue> data= Collections.emptyList();
-    DataVenue current;
     int currentPos=0;
 
     public interface OnItemClickListener {
