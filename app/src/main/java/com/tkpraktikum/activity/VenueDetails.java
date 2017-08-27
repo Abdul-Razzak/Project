@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.tkpraktikum.R;
+import com.tkpraktikum.model.Response;
 import com.tkpraktikum.model.Venue;
 import com.tkpraktikum.network.NetworkUtil;
 
@@ -64,6 +68,24 @@ public class VenueDetails extends AppCompatActivity {
         startActivity(new Intent(VenueDetails.this, ListActivity.class));
         finish();
 
+    }
+
+    public void checkin(View view)
+    {
+        checkInVenue("RazzakQ@gmail.com","Venue");
+    }
+
+    private void checkInVenue(String email, String venueId) {
+
+        mSubscriptions.add(NetworkUtil.checkin().checkin(email,venueId)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleCheckin,this::handleError));
+    }
+
+    private void handleCheckin(Response response) {
+        Button checkinButton = (Button)findViewById(R.id.checkin);
+        checkinButton.setEnabled(false);
     }
 
 }

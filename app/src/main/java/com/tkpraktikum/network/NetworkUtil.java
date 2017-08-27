@@ -98,4 +98,16 @@ public class NetworkUtil {
                 .build().create(RetrofitInterface.class);
 
     }
+
+    public static RetrofitInterface checkin(){
+
+        RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io());
+
+        return new Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .addCallAdapterFactory(rxAdapter)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(RetrofitInterface.class);
+
+    }
 }
