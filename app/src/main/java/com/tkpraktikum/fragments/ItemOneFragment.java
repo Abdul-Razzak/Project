@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -38,7 +39,7 @@ import com.tkpraktikum.activity.VenueDetails;
 public class ItemOneFragment extends Fragment implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener {
+        LocationListener, RadioGroup.OnCheckedChangeListener {
 
     double latitude;
     double longitude;
@@ -90,6 +91,8 @@ public class ItemOneFragment extends Fragment implements
         radioCategoryGroup = (RadioGroup) view.findViewById(R.id.category);
         int selectedId = radioCategoryGroup.getCheckedRadioButtonId();
         radioButton = (RadioButton) view.findViewById(selectedId);
+
+
 
         Button listRadioButton = (Button)view.findViewById(R.id.listRadio);
         query = listRadioButton.getText().toString();
@@ -227,5 +230,10 @@ public class ItemOneFragment extends Fragment implements
                 return;
             }
         }
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
     }
 }
