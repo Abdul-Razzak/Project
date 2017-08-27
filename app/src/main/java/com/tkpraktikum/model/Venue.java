@@ -5,6 +5,10 @@ public class Venue {
     public String name;
     public Double lat;
     public Double lng;
+    public Double rating;
+    public String phone;
+
+    public String location;
 
     public String getId() {
         return id;
@@ -37,4 +41,18 @@ public class Venue {
     public void setLng(Double lng) {
         this.lng = lng;
     }
+
+    public Double getRating() { return rating; }
+
+    public void setRating(Double rating) { this.rating = rating; }
+
+    public String getPhone() { return phone; }
+
+    public void setPhone(String phone) { this.phone = phone; }
+
+    public String getLocation() { return location;}
+
+    public void setLocation(String location) { this.location = location;}
+
+
 }

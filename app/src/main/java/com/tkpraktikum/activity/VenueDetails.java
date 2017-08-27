@@ -46,7 +46,24 @@ public class VenueDetails extends AppCompatActivity {
         TextView venueName = (TextView) findViewById (R.id.venueName);
         venueName.setText(response.getName());
 
+        TextView venueLocation = (TextView) findViewById (R.id.venueLocation);
+        venueLocation.setText(response.getLocation());
+
+        TextView contact = (TextView) findViewById (R.id.venueContact);
+        contact.setText(response.getPhone());
+
+
         System.out.println(response);
 
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(VenueDetails.this, ListActivity.class));
+        finish();
+
+    }
+
 }
