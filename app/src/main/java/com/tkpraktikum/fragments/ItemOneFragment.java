@@ -88,8 +88,26 @@ public class ItemOneFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
+        Button searchListButton;
+        Button searchMapButton;
+        RadioGroup radioCategoryGroup;
+        RadioButton radioButton;
+        Button listRadioButton;
+        Button mapRadioButton;
 
-        Button searchListButton = (Button)view.findViewById(R.id.searchList);
+        setupListeners(view);
+
+        return view;
+    }
+
+    private void setupListeners(final View view) {
+        Button searchListButton;
+        Button searchMapButton;
+        RadioGroup radioCategoryGroup;
+        RadioButton radioButton;
+        Button listRadioButton;
+        Button mapRadioButton;
+        searchListButton = (Button)view.findViewById(R.id.searchList);
         searchListButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -105,7 +123,7 @@ public class ItemOneFragment extends Fragment implements
             }
         });
 
-        Button searchMapButton = (Button)view.findViewById(R.id.searchMap);
+        searchMapButton = (Button)view.findViewById(R.id.searchMap);
         searchMapButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -121,14 +139,13 @@ public class ItemOneFragment extends Fragment implements
             }
         });
 
-        RadioGroup radioCategoryGroup;
-        RadioButton radioButton;
+
         radioCategoryGroup = (RadioGroup) view.findViewById(R.id.category);
         int selectedId = radioCategoryGroup.getCheckedRadioButtonId();
         radioButton = (RadioButton) view.findViewById(selectedId);
 
 
-        Button listRadioButton = (Button)view.findViewById(R.id.listRadio);
+        listRadioButton = (Button)view.findViewById(R.id.listRadio);
         query = listRadioButton.getText().toString();
         listRadioButton.setOnClickListener(new View.OnClickListener()
         {
@@ -140,7 +157,7 @@ public class ItemOneFragment extends Fragment implements
             }
         });
 
-        Button mapRadioButton = (Button)view.findViewById(R.id.MapRadio);
+        mapRadioButton = (Button)view.findViewById(R.id.MapRadio);
         mapRadioButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -150,8 +167,6 @@ public class ItemOneFragment extends Fragment implements
                 startActivity(intent1);//Edited here
             }
         });
-
-        return view;
     }
 
     protected synchronized void buildGoogleApiClient() {
