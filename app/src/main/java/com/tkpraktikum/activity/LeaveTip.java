@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.tkpraktikum.R;
 import com.tkpraktikum.model.Response;
@@ -16,18 +17,24 @@ import rx.subscriptions.CompositeSubscription;
 
 public class LeaveTip extends AppCompatActivity {
     private CompositeSubscription mSubscriptions;
-
-
+    String venueId;
+    String email;
+    String tip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSubscriptions = new CompositeSubscription();
+        Intent tipsIntent = getIntent();
+        venueId = tipsIntent.getStringExtra("venueId");
+        email = "angular@js.com";
         setContentView(R.layout.activity_leave_tip);
     }
 
     public void addTip(View view)
     {
-        addTipToVenue("email@dao.com", "jshdjfhdhf", "jdishdcvjbvjkxvdvbxj");
+        EditText editText = (EditText)findViewById(R.id.edtInput);
+        tip = editText.getText().toString();
+        addTipToVenue(email, venueId, tip);
     }
 
     private void addTipToVenue(String email, String venueId, String tip) {

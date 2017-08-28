@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Abu on 8/19/2017.
  */
 
-public class AdapterVenue extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class VenueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
     private LayoutInflater inflater;
@@ -31,7 +31,7 @@ public class AdapterVenue extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private final OnItemClickListener listener;
 
     // create constructor to innitilize context and data sent from MainActivity
-    public AdapterVenue(Context context, List<Venue> data, OnItemClickListener listener){
+    public VenueAdapter(Context context, List<Venue> data, OnItemClickListener listener){
         this.context=context;
         inflater= LayoutInflater.from(context);
         this.data=data;

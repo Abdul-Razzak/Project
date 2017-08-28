@@ -27,7 +27,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.tkpraktikum.adapter.AdapterVenue;
+import com.tkpraktikum.adapter.VenueAdapter;
 import com.tkpraktikum.model.Venue;
 import com.tkpraktikum.network.NetworkUtil;
 import com.tkpraktikum.R;
@@ -65,7 +65,7 @@ public class ListActivity extends AppCompatActivity{
      */
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     RecyclerView venueView;
-    AdapterVenue mAdapter;
+    VenueAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -258,7 +258,7 @@ public class ListActivity extends AppCompatActivity{
 
     private void handleResponse(List<Venue> response) {
         venueView = (RecyclerView)findViewById(R.id.venueList);
-        mAdapter = new AdapterVenue(ListActivity.this, response, new AdapterVenue.OnItemClickListener() {
+        mAdapter = new VenueAdapter(ListActivity.this, response, new VenueAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Venue item) {
                 Intent intent1 = new Intent(ListActivity.this, VenueDetails.class);

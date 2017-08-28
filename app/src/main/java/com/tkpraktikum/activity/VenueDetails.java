@@ -3,14 +3,21 @@ package com.tkpraktikum.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.tkpraktikum.R;
+import com.tkpraktikum.adapter.CommentAdapter;
+import com.tkpraktikum.adapter.VenueAdapter;
+import com.tkpraktikum.model.Comment;
 import com.tkpraktikum.model.Response;
 import com.tkpraktikum.model.Venue;
 import com.tkpraktikum.network.NetworkUtil;
+
+import java.util.List;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -19,6 +26,9 @@ import rx.subscriptions.CompositeSubscription;
 public class VenueDetails extends AppCompatActivity {
 
     private CompositeSubscription mSubscriptions;
+    RecyclerView commentView;
+    CommentAdapter mAdapter;
+    String venueId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +36,10 @@ public class VenueDetails extends AppCompatActivity {
         double latitude = 49.872677;
         double longitude= 8.632473;
         Intent detailsIntent = getIntent();
-        String query = detailsIntent.getStringExtra("venueId");
-        requestVenue(query);
+        venueId = detailsIntent.getStringExtra("venueId");
+        requestVenue(venueId);
         setContentView(R.layout.activity_venue_details);
+        requestComments(venueId,"angular@js.com");
     }
 
     private void requestVenue(String query) {
@@ -74,6 +85,7 @@ public class VenueDetails extends AppCompatActivity {
     public void leavetip(View view)
     {
         Intent intent1 = new Intent(VenueDetails.this, LeaveTip.class);
+        intent1.putExtra("venueId",venueId);
         startActivity(intent1);//Edited here
     }
 
@@ -89,6 +101,25 @@ public class VenueDetails extends AppCompatActivity {
     private void handleCheckin(Response response) {
         Button checkinButton = (Button)findViewById(R.id.checkin);
         checkinButton.setEnabled(false);
+    }
+
+
+    private void requestComments(String venueId, String email) {
+
+        mSubscriptions.add(NetworkUtil.generic().getComments(venueId, email)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleCommentResponse,this::handleError));
+    }
+
+
+    private void handleCommentResponse(List<Comment> response) {
+        commentView = (RecyclerView)findViewById(R.id.commentList);
+        mAdapter = new CommentAdapter(VenueDetails.this, response);
+        commentView.setAdapter(mAdapter);
+        commentView.setLayoutManager(new LinearLayoutManager(VenueDetails.this));
+        System.out.println(response);
+
     }
 
 }
