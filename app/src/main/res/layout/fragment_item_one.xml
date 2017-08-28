@@ -55,67 +55,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" >
+        <RadioButton
+            android:id="@+id/breakfastradio"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="270dp"
+            android:text="Breakfast" />
 
-            <RadioButton
-                android:id="@+id/breakfastradio"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="300dp"
-                android:text="Breakfast" />
+        <RadioButton
+            android:id="@+id/lunchradio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_below="@+id/breakfastradio"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="2dp"
+            android:text="Lunch"/>
 
-            <RadioButton
-                android:id="@+id/lunchradio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="300dp"
-                android:text="Lunch"/>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" >
+        <RadioButton
+            android:id="@+id/dinnerradio"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="2dp"
+            android:text="Dinner" />
 
-            <RadioButton
-                android:id="@+id/dinnerradio"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginStart="80dp"
-                android:text="Dinner" />
 
-            <RadioButton
-                android:id="@+id/nightliferadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nightlife"/>
-        </LinearLayout>
+        <RadioButton
+            android:id="@+id/coffeetea"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="2dp"
+            android:text="Coffee" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/coffeetea"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginStart="80dp"
-                android:text="Coffee/Tea" />
-
-            <RadioButton
-                android:id="@+id/thingsToDo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ThingsToDo"/>
-        </LinearLayout>
     </RadioGroup>
 
 

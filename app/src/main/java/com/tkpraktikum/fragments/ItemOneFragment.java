@@ -88,26 +88,7 @@ public class ItemOneFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_one, container, false);
-        Button searchListButton;
-        Button searchMapButton;
-        RadioGroup radioCategoryGroup;
-        RadioButton radioButton;
-        Button listRadioButton;
-        Button mapRadioButton;
-
-        setupListeners(view);
-
-        return view;
-    }
-
-    private void setupListeners(final View view) {
-        Button searchListButton;
-        Button searchMapButton;
-        RadioGroup radioCategoryGroup;
-        RadioButton radioButton;
-        Button listRadioButton;
-        Button mapRadioButton;
-        searchListButton = (Button)view.findViewById(R.id.searchList);
+        Button searchListButton = (Button)view.findViewById(R.id.searchList);
         searchListButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -123,7 +104,7 @@ public class ItemOneFragment extends Fragment implements
             }
         });
 
-        searchMapButton = (Button)view.findViewById(R.id.searchMap);
+        Button searchMapButton = (Button)view.findViewById(R.id.searchMap);
         searchMapButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -139,14 +120,29 @@ public class ItemOneFragment extends Fragment implements
             }
         });
 
-
+        RadioGroup radioCategoryGroup;
+        RadioButton radioButton;
         radioCategoryGroup = (RadioGroup) view.findViewById(R.id.category);
-        int selectedId = radioCategoryGroup.getCheckedRadioButtonId();
+        int selectedId = 0;
         radioButton = (RadioButton) view.findViewById(selectedId);
 
+        radioCategoryGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+               if(i == R.id.breakfastradio) {
+                   query = "breakfast";
+               } else if(i == R.id.lunchradio) {
+                   query = "lunch";
+               } else if(i == R.id.dinnerradio) {
+                   query = "dinner";
+               } else if(i == R.id.coffeetea) {
+                   query = "coffee";
+               }
+            }
+        });
 
-        listRadioButton = (Button)view.findViewById(R.id.listRadio);
-        query = listRadioButton.getText().toString();
+
+        Button listRadioButton = (Button)view.findViewById(R.id.listRadio);
         listRadioButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -157,7 +153,7 @@ public class ItemOneFragment extends Fragment implements
             }
         });
 
-        mapRadioButton = (Button)view.findViewById(R.id.MapRadio);
+        Button mapRadioButton = (Button)view.findViewById(R.id.MapRadio);
         mapRadioButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -167,6 +163,8 @@ public class ItemOneFragment extends Fragment implements
                 startActivity(intent1);//Edited here
             }
         });
+
+        return view;
     }
 
     protected synchronized void buildGoogleApiClient() {
