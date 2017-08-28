@@ -107,7 +107,7 @@ public class MapDemoActivity extends AppCompatActivity{
                 for(Venue venue: venues) {
                     LatLng latlng = new LatLng(venue.getLat(),venue.getLng());
                     markerList.add(latlng);
-                    googleMap.addMarker(new MarkerOptions().position(latlng));
+                    googleMap.addMarker(new MarkerOptions().position(latlng).title(venue.getName()));
                 }
             }
         } else {
