@@ -43,4 +43,7 @@ public interface RetrofitInterface {
     @POST("checkinVenue")
     Observable<Response> checkin(@Query("email") String email, @Query("venueId") String venueId);
 
+    @POST("/addComment")
+    Observable<Response> addComment(@Query("email") String email, @Query("venueId") String venueId, @Query("tips") String tips);
+
 }

@@ -80,7 +80,7 @@ public class VenueDetails extends AppCompatActivity {
 
     private void checkInVenue(String email, String venueId) {
 
-        mSubscriptions.add(NetworkUtil.checkin().checkin(email,venueId)
+        mSubscriptions.add(NetworkUtil.generic().checkin(email,venueId)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleCheckin,this::handleError));

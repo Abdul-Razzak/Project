@@ -99,7 +99,7 @@ public class NetworkUtil {
 
     }
 
-    public static RetrofitInterface checkin(){
+    public static RetrofitInterface generic(){
 
         RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io());
 

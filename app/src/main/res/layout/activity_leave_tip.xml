@@ -26,13 +26,14 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/checkin"
+            android:id="@+id/addTip"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
             android:layout_marginStart="110dp"
             android:layout_marginTop="150dp"
-            android:text="Leave a tip" />
+            android:text="Leave a tip"
+            android:onClick="addTip"/>
 
     </LinearLayout>
 
