@@ -1,5 +1,6 @@
 package com.tkpraktikum.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import com.tkpraktikum.R;
 
 public class FragmentBottom extends AppCompatActivity {
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,12 +20,18 @@ public class FragmentBottom extends AppCompatActivity {
         setContentView(R.layout.activity_fragment_bottom);
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.navigation);
+        Intent detailsIntent = getIntent();
+        email = detailsIntent.getStringExtra("emailId");
 
         bottomNavigationView.setOnNavigationItemSelectedListener
                 (new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         Fragment selectedFragment = null;
+                        /*Bundle bundle=new Bundle();
+                        bundle.putString("email", email);
+                        //set Fragmentclass Arguments
+                        selectedFragment.setArguments(bundle);*/
                         switch (item.getItemId()) {
                             case R.id.action_item1:
                                 selectedFragment = ItemOneFragment.newInstance();

@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.tkpraktikum.BaseApplication;
 import com.tkpraktikum.R;
 
 import com.google.gson.Gson;
@@ -49,6 +51,7 @@ public class LoginFragment extends Fragment {
 
     private CompositeSubscription mSubscriptions;
     private SharedPreferences mSharedPreferences;
+    String email;
 
 
 
@@ -87,7 +90,7 @@ public class LoginFragment extends Fragment {
 
         setError();
 
-        String email = mEtEmail.getText().toString();
+        email = mEtEmail.getText().toString();
         String password = mEtPassword.getText().toString();
 
         int err = 0;
@@ -142,6 +145,8 @@ public class LoginFragment extends Fragment {
         mEtPassword.setText(null);
 
         Intent intent = new Intent(getActivity(), FragmentBottom.class);
+        intent.putExtra("emailId",email);
+        ((BaseApplication) getActivity().getApplication()).setEmail(email);
         startActivity(intent);
 
     }

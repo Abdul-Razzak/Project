@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.tkpraktikum.BaseApplication;
 import com.tkpraktikum.R;
 import com.tkpraktikum.adapter.CommentAdapter;
 import com.tkpraktikum.adapter.VenueAdapter;
@@ -39,7 +40,7 @@ public class VenueDetails extends AppCompatActivity {
         double longitude= 8.632473;
         Intent detailsIntent = getIntent();
         venueId = detailsIntent.getStringExtra("venueId");
-        email = "angular@js.com";
+        email = ((BaseApplication) getApplication()).getEmail();
         requestVenue(venueId);
         setContentView(R.layout.activity_venue_details);
         requestComments(venueId, email);

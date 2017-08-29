@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.tkpraktikum.BaseApplication;
 import com.tkpraktikum.R;
 import com.tkpraktikum.model.Response;
 import com.tkpraktikum.network.NetworkUtil;
@@ -26,7 +27,7 @@ public class LeaveTip extends AppCompatActivity {
         mSubscriptions = new CompositeSubscription();
         Intent tipsIntent = getIntent();
         venueId = tipsIntent.getStringExtra("venueId");
-        email = "angular@js.com";
+        email = ((BaseApplication) getApplication()).getEmail();
         setContentView(R.layout.activity_leave_tip);
     }
 

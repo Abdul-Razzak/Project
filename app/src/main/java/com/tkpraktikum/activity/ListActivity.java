@@ -27,6 +27,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.tkpraktikum.BaseApplication;
 import com.tkpraktikum.adapter.VenueAdapter;
 import com.tkpraktikum.model.Venue;
 import com.tkpraktikum.network.NetworkUtil;
@@ -269,6 +270,7 @@ public class ListActivity extends AppCompatActivity{
         venueView.setAdapter(mAdapter);
         venueView.setLayoutManager(new LinearLayoutManager(ListActivity.this));
         System.out.println(response);
+
 
     }
 
