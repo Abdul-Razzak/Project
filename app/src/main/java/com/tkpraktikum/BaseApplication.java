@@ -8,6 +8,27 @@ import android.app.Application;
 
 public class BaseApplication extends Application {
 
+    public String getVenueId() {
+        return venueId;
+    }
+
+    public void setVenueId(String venueId) {
+        this.venueId = venueId;
+    }
+
+    String venueId;
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
+    String query;
+
+
     public String getEmail() {
         return email;
     }

@@ -32,17 +32,21 @@ public class VenueDetails extends AppCompatActivity {
     CommentAdapter mAdapter;
     String venueId;
     String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSubscriptions = new CompositeSubscription();
-        double latitude = 49.872677;
-        double longitude= 8.632473;
         Intent detailsIntent = getIntent();
         venueId = detailsIntent.getStringExtra("venueId");
         email = ((BaseApplication) getApplication()).getEmail();
-        requestVenue(venueId);
         setContentView(R.layout.activity_venue_details);
+        loadChildren();
+
+    }
+
+    private void loadChildren() {
+        requestVenue(venueId);
         requestComments(venueId, email);
         requestCheckinInfo(venueId, email);
     }
@@ -89,7 +93,7 @@ public class VenueDetails extends AppCompatActivity {
 
     }
 
-    @Override
+   @Override
     public void onBackPressed()
     {
         super.onBackPressed();

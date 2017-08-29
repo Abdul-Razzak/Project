@@ -74,12 +74,17 @@ public class ListActivity extends AppCompatActivity{
         Intent listIntent = getIntent();
         setContentView(R.layout.activity_list);
         query = listIntent.getStringExtra("query");
+        if(query == null || query == "") {
+            query = ((BaseApplication)getApplication()).getQuery();
+        }
+
         if (savedInstanceState != null && savedInstanceState.keySet().contains(KEY_LOCATION)) {
             // Since KEY_LOCATION was found in the Bundle, we can be sure that mCurrentLocation
             // is not null.
             mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             loadLocation();
         }
+        ((BaseApplication)getApplication()).setQuery(query);
     }
 
     protected void loadLocation() {
@@ -121,6 +126,7 @@ public class ListActivity extends AppCompatActivity{
     */
     @Override
     protected void onStart() {
+
         super.onStart();
     }
 
