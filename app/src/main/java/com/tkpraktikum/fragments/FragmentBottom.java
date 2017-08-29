@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.tkpraktikum.R;
+import com.tkpraktikum.activity.ListActivity;
+import com.tkpraktikum.activity.VenueDetails;
 
 public class FragmentBottom extends AppCompatActivity {
     String email;
@@ -60,5 +62,14 @@ public class FragmentBottom extends AppCompatActivity {
 
         //Used to select an item programmatically
         //bottomNavigationView.getMenu().getItem(2).setChecked(true);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(FragmentBottom.this, FragmentBottom.class));
+        finish();
+
     }
 }
