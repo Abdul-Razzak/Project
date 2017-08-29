@@ -27,6 +27,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -107,7 +108,13 @@ public class MapDemoActivity extends AppCompatActivity{
                     markerList.add(latlng);
                     googleMap.addMarker(new MarkerOptions().position(latlng).title(venue.getName()));
                 }
+                LatLngBounds DARMSTADT = new LatLngBounds(
+                        new LatLng(venues.get(0).getLat(), venues.get(0).getLng()), new LatLng(venues.get(0).getLat(), venues.get(0).getLng()));
+
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(DARMSTADT.getCenter(), 10));
             }
+
+
         } else {
             Toast.makeText(this, "Error - Map was null!!", Toast.LENGTH_SHORT).show();
         }
