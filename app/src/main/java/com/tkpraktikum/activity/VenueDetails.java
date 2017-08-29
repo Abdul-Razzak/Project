@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.tkpraktikum.R;
 import com.tkpraktikum.adapter.CommentAdapter;
 import com.tkpraktikum.adapter.VenueAdapter;
+import com.tkpraktikum.model.Checkin;
 import com.tkpraktikum.model.Comment;
 import com.tkpraktikum.model.Response;
 import com.tkpraktikum.model.Venue;
@@ -29,6 +30,7 @@ public class VenueDetails extends AppCompatActivity {
     RecyclerView commentView;
     CommentAdapter mAdapter;
     String venueId;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +39,27 @@ public class VenueDetails extends AppCompatActivity {
         double longitude= 8.632473;
         Intent detailsIntent = getIntent();
         venueId = detailsIntent.getStringExtra("venueId");
+        email = "angular@js.com";
         requestVenue(venueId);
         setContentView(R.layout.activity_venue_details);
-        requestComments(venueId,"angular@js.com");
+        requestComments(venueId, email);
+        requestCheckinInfo(venueId, email);
+    }
+
+    private void requestCheckinInfo(String venueId, String email) {
+        mSubscriptions.add(NetworkUtil.generic().getCheckinInfo(venueId, email)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleCheckInInfoResponse,this::handleError));
+    }
+
+    private void handleCheckInInfoResponse(List<Checkin> response) {
+        if (response.size() >= 1) {
+            Button checkinButton = (Button)findViewById(R.id.checkin);
+            checkinButton.setText("Already Visited");
+            checkinButton.setEnabled(false);
+
+        }
     }
 
     private void requestVenue(String query) {
@@ -79,7 +99,7 @@ public class VenueDetails extends AppCompatActivity {
 
     public void checkin(View view)
     {
-        checkInVenue("RazzakQ@gmail.com","Venue");
+        checkInVenue(email,venueId);
     }
 
     public void leavetip(View view)
@@ -100,6 +120,7 @@ public class VenueDetails extends AppCompatActivity {
 
     private void handleCheckin(Response response) {
         Button checkinButton = (Button)findViewById(R.id.checkin);
+        checkinButton.setText("Already Visited");
         checkinButton.setEnabled(false);
     }
 

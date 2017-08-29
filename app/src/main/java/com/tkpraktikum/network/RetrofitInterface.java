@@ -1,5 +1,6 @@
 package com.tkpraktikum.network;
 
+import com.tkpraktikum.model.Checkin;
 import com.tkpraktikum.model.Comment;
 import com.tkpraktikum.model.Response;
 import com.tkpraktikum.model.User;
@@ -49,5 +50,8 @@ public interface RetrofitInterface {
 
     @GET("/getComments")
     Observable<List<Comment>> getComments(@Query("venueId") String venueId, @Query("email") String email);
+
+    @GET("/getCheckinInfo")
+    Observable<List<Checkin>> getCheckinInfo(@Query("venueId") String venueId, @Query("email") String email);
 
 }
