@@ -29,6 +29,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.tkpraktikum.BaseApplication;
 import com.tkpraktikum.adapter.VenueAdapter;
+import com.tkpraktikum.fragments.FragmentBottom;
+import com.tkpraktikum.fragments.ItemOneFragment;
 import com.tkpraktikum.model.Venue;
 import com.tkpraktikum.network.NetworkUtil;
 import com.tkpraktikum.R;
@@ -276,7 +278,14 @@ public class ListActivity extends AppCompatActivity{
         venueView.setAdapter(mAdapter);
         venueView.setLayoutManager(new LinearLayoutManager(ListActivity.this));
         System.out.println(response);
+    }
 
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(ListActivity.this, FragmentBottom.class));
+        finish();
 
     }
 
