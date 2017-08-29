@@ -65,7 +65,7 @@
         android:paddingLeft="@dimen/button_padding"
         android:text="Change Password" />
 
-    <Button
+    <!-- <Button
         android:id="@+id/btn_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,6 +73,6 @@
         android:layout_marginTop="@dimen/button_margin"
         android:drawableRight="@drawable/ic_exit"
         android:paddingLeft="@dimen/button_padding"
-        android:text="Logout" />
+        android:text="Logout" /> -->
 
 </RelativeLayout>
