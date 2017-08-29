@@ -30,7 +30,7 @@
             android:theme="@style/AppTheme.Profile" />
         <activity
             android:name=".fragments.FragmentBottom"
-            android:label="FragmentBottom" />
+            android:label="TripBuddy" />
         <activity android:name=".activity.EditProfile" />
         <activity android:name=".activity.VenueDetails" />
         <activity

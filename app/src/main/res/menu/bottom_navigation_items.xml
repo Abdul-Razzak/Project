@@ -4,10 +4,7 @@
         android:id="@+id/action_item1"
         android:icon="@drawable/tab_search"
         android:title="@string/item_1"/>
-    <item
-        android:id="@+id/action_item2"
-        android:icon="@drawable/tab_list"
-        android:title="@string/item_2"/>
+
     <item
         android:id="@+id/action_item3"
         android:icon="@drawable/tab_history"

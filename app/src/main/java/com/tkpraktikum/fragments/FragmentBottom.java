@@ -36,9 +36,6 @@ public class FragmentBottom extends AppCompatActivity {
                             case R.id.action_item1:
                                 selectedFragment = ItemOneFragment.newInstance();
                                 break;
-                            case R.id.action_item2:
-                                selectedFragment = ItemTwoFragment.newInstance();
-                                break;
                             case R.id.action_item3:
                                 selectedFragment = ItemThreeFragment.newInstance();
                                 break;
