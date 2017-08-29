@@ -54,4 +54,7 @@ public interface RetrofitInterface {
     @GET("/getCheckinInfo")
     Observable<List<Checkin>> getCheckinInfo(@Query("venueId") String venueId, @Query("email") String email);
 
+    @GET("/getUserCheckinInfo")
+    Observable<List<Checkin>> getUserCheckinInfo(@Query("email") String email);
+
 }

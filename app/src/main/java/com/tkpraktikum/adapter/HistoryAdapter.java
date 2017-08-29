@@ -8,23 +8,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tkpraktikum.R;
-import com.tkpraktikum.model.Comment;
+import com.tkpraktikum.model.Checkin;
 
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by salam on 28.08.17.
+ * Created by salam on 29.08.17.
  */
 
-public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private LayoutInflater inflater;
-    List<Comment> data= Collections.emptyList();
+    List<Checkin> data= Collections.emptyList();
 
-    // create constructor to innitilize context and data sent from MainActivity
-    public CommentAdapter(Context context, List<Comment> data){
+    public HistoryAdapter(Context context , List<Checkin> data) {
         this.context=context;
         inflater= LayoutInflater.from(context);
         this.data=data;
@@ -32,7 +30,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.container_comments, parent,false);
+        View view=inflater.inflate(R.layout.container_history, parent,false);
         MyHolder holder=new MyHolder(view);
         return holder;
     }
@@ -40,8 +38,9 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
-        Comment comment = data.get(position);
-        myHolder.comment.setText(comment.getTips());
+        Checkin checkin = data.get(position);
+        myHolder.venueName.setText(checkin.getVenue_name());
+        myHolder.createdAt.setText(checkin.getCreated_at());
     }
 
     @Override
@@ -50,11 +49,13 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        TextView comment;
+        TextView venueName;
+        TextView createdAt;
 
         public MyHolder(View view) {
             super(view);
-            comment= (TextView) itemView.findViewById(R.id.comment);
+            venueName= (TextView) itemView.findViewById(R.id.venueName);
+            createdAt = (TextView) itemView.findViewById(R.id.createdAt);
         }
     }
 }
