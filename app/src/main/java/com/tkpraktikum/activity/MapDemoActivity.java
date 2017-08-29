@@ -98,10 +98,8 @@ public class MapDemoActivity extends AppCompatActivity{
     protected void loadMap(GoogleMap googleMap) {
         map = googleMap;
         if (map != null) {
-            Toast.makeText(this, "Map Fragment was loaded properly!", Toast.LENGTH_SHORT).show();
             MapDemoActivityPermissionsDispatcher.getMyLocationWithCheck(this);
             MapDemoActivityPermissionsDispatcher.startLocationUpdatesWithCheck(this);
-            LatLng sydney = new LatLng(49.876367, 8.649936);
             List<LatLng> markerList  = new ArrayList<>();
             if(venues !=null) {
                 for(Venue venue: venues) {
@@ -193,7 +191,6 @@ public class MapDemoActivity extends AppCompatActivity{
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
             map.animateCamera(cameraUpdate);
         } else {
-            Toast.makeText(this, "Current location was null, enable GPS on emulator!", Toast.LENGTH_SHORT).show();
         }
         MapDemoActivityPermissionsDispatcher.startLocationUpdatesWithCheck(this);
     }
@@ -258,7 +255,6 @@ public class MapDemoActivity extends AppCompatActivity{
         }
         previousLat = lat;
         previousLng = lng;
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     public void onSaveInstanceState(Bundle savedInstanceState) {

@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -172,11 +171,9 @@ public class ListActivity extends AppCompatActivity{
         // Display the connection status
 
         if (mCurrentLocation != null) {
-            Toast.makeText(this, "GPS location was found!", Toast.LENGTH_SHORT).show();
             LatLng latLng = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
         } else {
-            Toast.makeText(this, "Current location was null, enable GPS on emulator!", Toast.LENGTH_SHORT).show();
         }
         ListActivityPermissionsDispatcher.startLocationUpdatesWithCheck(this);
     }
@@ -222,7 +219,6 @@ public class ListActivity extends AppCompatActivity{
         System.out.print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         lat = location.getLatitude();
         lng = location.getLongitude();
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
