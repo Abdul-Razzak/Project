@@ -8,6 +8,26 @@ public class Checkin {
     String venueId;
     String email;
 
+    public String getVenueName() {
+        return venueName;
+    }
+
+    public void setVenueName(String venueName) {
+        this.venueName = venueName;
+    }
+
+    String venueName;
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    String createdAt;
+
     public String getVenueId() {
         return venueId;
     }

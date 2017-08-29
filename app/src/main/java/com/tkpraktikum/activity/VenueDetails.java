@@ -32,7 +32,7 @@ public class VenueDetails extends AppCompatActivity {
     CommentAdapter mAdapter;
     String venueId;
     String email;
-
+    String venueName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +42,7 @@ public class VenueDetails extends AppCompatActivity {
         email = ((BaseApplication) getApplication()).getEmail();
         setContentView(R.layout.activity_venue_details);
         loadChildren();
+        venueName = "Nazar";
 
     }
 
@@ -79,9 +80,9 @@ public class VenueDetails extends AppCompatActivity {
     }
 
     private void handleResponse(Venue response) {
-        TextView venueName = (TextView) findViewById (R.id.venueName);
-        venueName.setText(response.getName());
-
+        TextView venueNameTextView = (TextView) findViewById (R.id.venueName);
+        venueNameTextView.setText(response.getName());
+        venueName = response.getName();
         TextView venueLocation = (TextView) findViewById (R.id.venueLocation);
         venueLocation.setText(response.getLocation());
 
@@ -104,7 +105,7 @@ public class VenueDetails extends AppCompatActivity {
 
     public void checkin(View view)
     {
-        checkInVenue(email,venueId);
+        checkInVenue(email,venueId,venueName);
     }
 
     public void leavetip(View view)
@@ -115,9 +116,9 @@ public class VenueDetails extends AppCompatActivity {
     }
 
 
-    private void checkInVenue(String email, String venueId) {
+    private void checkInVenue(String email, String venueId, String venueName) {
 
-        mSubscriptions.add(NetworkUtil.generic().checkin(email,venueId)
+        mSubscriptions.add(NetworkUtil.generic().checkin(email,venueId,venueName)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleCheckin,this::handleError));
